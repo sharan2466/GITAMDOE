@@ -1,0 +1,26 @@
+{% extends 'excelapp/base.html' %}
+{% block content %}
+<h2>Compare Two Excel Files</h2>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <p><strong>Upload File 1:</strong> <input type="file" name="file1" required></p>
+  <p><strong>Upload File 2:</strong> <input type="file" name="file2" required></p>
+  
+  <p><strong>Column Mappings:</strong><br>
+<small><span style="color: red;">MAPPING CRITERIA SHOULD BE FILE1_COLUMN=FILE2_COLUMN</span></small><br>
+<textarea name="mappings" rows="2" cols="100" style="font-size: 16px; padding: 8px;" required></textarea></p>
+
+  <button type="submit" style="padding: 10px 20px; font-size: 16px;">Compare</button>
+</form>
+
+{% if error %}
+  <p style="color:red;"><strong>Error:</strong> {{ error }}</p>
+{% endif %}
+
+{% if download1 %}
+  <p><a href="{{ download1 }}">📥 Download File 1 Output</a></p>
+  <p><a href="{{ download2 }}">📥 Download File 2 Output</a></p>
+{% endif %}
+{% endblock %}

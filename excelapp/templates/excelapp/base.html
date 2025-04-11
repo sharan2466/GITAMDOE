@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Excel Tools</title>
+  <style>
+    body {
+      background-color: #F4E4C9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+  header {
+  background-color: #007367;
+  color: white;
+  height: 110px; /* Fixed height to prevent expansion */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Remove extra padding */
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-center img {
+  height: 90px;   /* Set desired logo height */
+  width: auto;    /* Keep aspect ratio */
+}
+
+    .header-center h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .subheading {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    nav ul {
+      list-style: none;
+      background: #333;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav li a {
+      color: white;
+      padding: 1em;
+      display: block;
+      text-decoration: none;
+    }
+
+    nav li ul {
+      display: none;
+      position: absolute;
+      background: #555;
+      top: 100%;
+      left: 0;
+    }
+
+    nav li:hover ul {
+      display: block;
+    }
+
+    main {
+      padding: 2em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-center">
+      <img src="{% static 'logo3.png' %}" alt="Logo">
+      <h1>GITAM (Deemed to be University)</h1>
+    </div>
+	
+    </header>
+
+  <nav>
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li>
+        <a href="#">Excel Works</a>
+        <ul>
+          <li><a href="{% url 'compare_excel' %}">Compare_Two_Excel_Files</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+</body>
+</html>
